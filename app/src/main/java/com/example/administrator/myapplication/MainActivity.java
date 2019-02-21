@@ -7,6 +7,11 @@ import android.text.SpannableStringBuilder;
 import com.mukesh.MarkdownView;
 import com.overzealous.remark.Remark;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +26,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Remark remark = new Remark();
+                try {
+                    Document document = Jsoup.connect("https://www.jianshu.com/p/21615b72fbc5").get();
+                    String html = document.select(".show-content").html();
+                    System.out.println( html);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 String input = "<div data-note-content=\"\" class=\"show-content\">\n" +
                         "          <div class=\"show-content-free\">\n" +
                         "            <h3>一、概述</h3>\n" +
