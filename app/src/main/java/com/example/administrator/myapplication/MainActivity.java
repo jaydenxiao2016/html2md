@@ -7,6 +7,8 @@ import android.text.SpannableStringBuilder;
 import com.mukesh.MarkdownView;
 import com.overzealous.remark.Remark;
 
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
     private MarkdownView markdown_view;
 
@@ -102,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 input = input.replace("src=\"//", "src=\"https://");
                 final SpannableStringBuilder spannableString = new SpannableStringBuilder("");
                 try {
+//                    spannableString.append(remark.convert(new URL("http://www.overzealous.com/"), 15000););
                     spannableString.append(remark.convertFragment(input));
                     runOnUiThread(new Runnable() {
                         @Override
